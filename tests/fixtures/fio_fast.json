@@ -1,0 +1,59 @@
+{
+  "fio version": "fio-3.35",
+  "timestamp": 1764000000,
+  "global options": {},
+  "jobs": [
+    {
+      "jobname": "etcd-check",
+      "groupid": 0,
+      "error": 0,
+      "job options": {
+        "name": "etcd-check",
+        "rw": "write",
+        "ioengine": "sync",
+        "fdatasync": "1",
+        "directory": "/var/lib/etcd/etcd-disk-check-x",
+        "size": "22m",
+        "bs": "2300"
+      },
+      "write": {
+        "io_bytes": 23068672,
+        "io_kbytes": 22528,
+        "bw": 1824,
+        "iops": 812.375,
+        "runtime": 12346,
+        "total_ios": 10029,
+        "clat_ns": {
+          "min": 4100,
+          "max": 98000,
+          "mean": 9800.5,
+          "stddev": 2100.1,
+          "N": 10029
+        }
+      },
+      "sync": {
+        "total_ios": 0,
+        "lat_ns": {
+          "min": 905016,
+          "max": 7028736,
+          "mean": 1143200.4,
+          "stddev": 381066.8,
+          "N": 10029,
+          "percentile": {
+            "1.000000": 905216,
+            "5.000000": 962560,
+            "10.000000": 995328,
+            "50.000000": 1105920,
+            "90.000000": 1286144,
+            "95.000000": 1351680,
+            "99.000000": 1433600,
+            "99.500000": 1531904,
+            "99.900000": 2342912
+          }
+        }
+      },
+      "usr_cpu": 1.2,
+      "sys_cpu": 6.4
+    }
+  ]
+}

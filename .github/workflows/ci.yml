@@ -1,0 +1,43 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -e ".[dev]"
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: python -m pytest -q
+      - name: Smoke test against fixtures
+        run: |
+          etcd-disk-check metrics tests/fixtures/metrics_healthy.prom
+          etcd-disk-check bench --fio-json tests/fixtures/fio_fast.json --json
+
+  fio-end-to-end:
+    # Runs the real benchmark on the CI runner's disk. The grade depends on that
+    # disk, so PASS/WARN/FAIL (exit 0-2) are all accepted; exit 3 (could not
+    # measure, e.g. fio output not understood) fails the job.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update && sudo apt-get install -y fio
+      - run: python -m pip install .
+      - run: |
+          rc=0
+          etcd-disk-check bench --dir "$RUNNER_TEMP" || rc=$?
+          echo "exit code: $rc"
+          test "$rc" -le 2

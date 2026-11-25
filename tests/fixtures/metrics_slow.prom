@@ -1,0 +1,44 @@
+# HELP etcd_server_has_leader Whether or not a leader exists. 1 is existence, 0 is not.
+# TYPE etcd_server_has_leader gauge
+etcd_server_has_leader 1
+# HELP etcd_disk_backend_commit_duration_seconds The latency distributions of commit called by backend.
+# TYPE etcd_disk_backend_commit_duration_seconds histogram
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.001"} 0
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.002"} 100
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.004"} 1000
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.008"} 3000
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.016"} 6000
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.032"} 8500
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.064"} 9600
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.128"} 9950
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.256"} 10000
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.512"} 10000
+etcd_disk_backend_commit_duration_seconds_bucket{le="1.024"} 10000
+etcd_disk_backend_commit_duration_seconds_bucket{le="2.048"} 10000
+etcd_disk_backend_commit_duration_seconds_bucket{le="4.096"} 10000
+etcd_disk_backend_commit_duration_seconds_bucket{le="8.192"} 10000
+etcd_disk_backend_commit_duration_seconds_bucket{le="+Inf"} 10000
+etcd_disk_backend_commit_duration_seconds_sum 271.9
+etcd_disk_backend_commit_duration_seconds_count 10000
+# HELP etcd_disk_wal_fsync_duration_seconds The latency distributions of fsync called by WAL.
+# TYPE etcd_disk_wal_fsync_duration_seconds histogram
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.001"} 100
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.002"} 500
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.004"} 2000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.008"} 5000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.016"} 8000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.032"} 9500
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.064"} 9900
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.128"} 9990
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.256"} 10000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.512"} 10000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="1.024"} 10000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="2.048"} 10000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="4.096"} 10000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="8.192"} 10000
+etcd_disk_wal_fsync_duration_seconds_bucket{le="+Inf"} 10000
+etcd_disk_wal_fsync_duration_seconds_sum 152.6
+etcd_disk_wal_fsync_duration_seconds_count 10000
+# HELP etcd_server_leader_changes_seen_total The number of leader changes seen.
+# TYPE etcd_server_leader_changes_seen_total counter
+etcd_server_leader_changes_seen_total 1
